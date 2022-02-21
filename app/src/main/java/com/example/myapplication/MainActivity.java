@@ -37,7 +37,13 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
-
+    @Override
+    protected void onDestroy() {
+        // while exiting the application, please make sure to invoke cleanup.
+        /// 退出应用后，调用 cleanup 清理资源
+        INetSDK.Cleanup();
+        super.onDestroy();
+    }
     // When the network of app and device disconnected, the callback will be triggered. The detection time of
 //    disconnection is 60 seconds by default.
     public class DeviceDisConnect implements CB_fDisConnect {
